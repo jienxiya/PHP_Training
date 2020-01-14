@@ -6,7 +6,7 @@ $divisibleBy2 = [];
 $divisibleBy3 = [];
 $divisibleBy5 = [];
 
-    for($i = 0 ; $i <= 15 ; $i++){
+    for($i = 1 ; $i <= 15 ; $i++){
         if($i % 2 == 0){
             array_push($divisibleBy2, $i);
         }else if($i % 3 == 0){
@@ -31,4 +31,18 @@ $divisibleBy5 = [];
     foreach($divisibleBy5 as $num){
         echo $num. " ";
     }
+
+    //using function
+    // function isDivisible($divisor){
+    //     echo "Divisible by $divisor <br>";
+    //     for($i = 1 ; $i <= 15 ; $i++){
+    //         if($i % $divisor == 0){
+    //             echo $i . "<br>";
+    //         }
+    //     }
+    // }
+    // isDivisible(2);
+    // isDivisible(3);
+    // isDivisible(5);
+
 ?>
