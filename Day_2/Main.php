@@ -20,13 +20,18 @@
     print_r($my_associativeArray);
 
 // 5.
+
+    $fruits = ["banana","mango","apple"];
     echo "<br><br>Adding data in an existing array: <br>";
-    addDataInNumericArray("orange");
-    addDataInNumericArray("ponkan");
-    addDataInAssociativeArray("Nangka","Lami");
+    addDataInNumericArray($fruits,"orange");
+    addDataInNumericArray($fruits,"ponkan");
+    addDataInAssociativeArray($fruits,"Nangka","Lami");
+    addData($fruits,"bayabas");
 
 // 6.
     echo "<br><br>Array after adding data: <br>";
-    display($fruits);
+    displayNumber5($fruits);
+    echo "<br>";
+    display();
 
 ?>

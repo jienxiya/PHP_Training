@@ -15,26 +15,29 @@
         return $datas;
     };
 
-// 3. function that can display multidimensional array
-    
-    function displayMultidimensionalArray(){
-        $my_array = array(
-            "food" => array(
-                0 => 'Go',
-                1 => 'Glow',
-                2 => 'Grow'
-            ),
-            "section" => array(
-                "sectionA" => ["Mary", "Jane", "Mon","Sun","Sen"],
-                "sectionB" => ["Kan", "Ken", "Kon","Kun","Kin"]
-            ),
-            "ph_presidents" => array(
-                0 => 'Marcos',
-                1 => 'Noynoy',
-                2 => 'Duterte'
-            )
-        );
+    function displayDataInArray($my_array){
+        print_r($my_array);
+    };
 
+// 3. function that can display multidimensional array
+    $my_array = array(
+        "food" => array(
+            0 => 'Go',
+            1 => 'Glow',
+            2 => 'Grow'
+        ),
+        "section" => array(
+            "sectionA" => ["Mary", "Jane", "Mon","Sun","Sen"],
+            "sectionB" => ["Kan", "Ken", "Kon","Kun","Kin"]
+        ),
+        "ph_presidents" => array(
+            0 => 'Marcos',
+            1 => 'Noynoy',
+            2 => 'Duterte'
+        )
+    );
+    function displayMultidimensionalArray(){
+        global $my_array;
         $array = "";
         foreach($my_array as $category=>$content){
             $array .= "<br>$category" . ": <br>";
@@ -66,25 +69,39 @@
     }
 
 // 5. function that can add data to an existing array 
-    $fruits = ["banana","mango","apple"];
+    // $fruits = ["banana","mango","apple"];
 
-    function addDataInAssociativeArray($key,$value){
-        global $fruits;
-        $fruits[$key] = $value;
+    function addDataInAssociativeArray(&$array,$key,$value){
+        // global $fruits;
+        // $fruits[$key] = $value;
+        $array[$key] = $value;
         echo "<br>Successfully Added!";
-        return $fruits;
+        // return $fruits;
+        return $array;
     }
 
-    function addDataInNumericArray($data){
-        global $fruits;
-        array_push($fruits,$data);
+    function addDataInNumericArray(&$array,$data){
+        // global $fruits;
+        // array_push($fruits,$data);
+        array_push($array,$data);
         echo "<br>Successfully Added!";
-        return $fruits;
+        // return $fruits;
+        return $array;
+    }
+
+    function addData(&$array,$data){
+        array_push($array,$data);
+        echo "<br>Successfully Added!";
+        return $array;
     }
 
 // 6. display data from number 5.
     function display(){
         global $fruits;
         print_r($fruits);
+    }
+
+    function displayNumber5($array){
+        print_r($array);
     }
 ?>
