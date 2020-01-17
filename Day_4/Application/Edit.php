@@ -3,7 +3,7 @@
     $conn = connectToDB();
     update();
 
-    $id=$_REQUEST['id'];
+    $id = $_REQUEST['id'];
     $query = "SELECT * from persons where id='".$id."'"; 
     $result = mysqli_query($conn, $query) or die ( mysqli_error());
     $row = mysqli_fetch_assoc($result);
@@ -29,6 +29,7 @@
             <div class="col-sm-6    ">
                 <center><h3>PHP Activity Compilation</h3></center>
                 <form class="form" method="post">
+                    <input type="text" value="<?php echo $row['id'];?>" hidden name="id">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="firstname" value="<?php echo $row['first_name'];?>">
 

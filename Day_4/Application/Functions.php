@@ -1,7 +1,7 @@
 <?php
 
 function connectToDB(){
-    return mysqli_connect("localhost", "root", "admin123","pntraining");
+    return mysqli_connect("localhost", "root", "","pntraining");
 }
 
 
@@ -46,11 +46,12 @@ function delete(){
 
 function update(){
     $conn = connectToDB();
-
-    if (isset($_POST['submit'])) {
-        $id=$_POST['id'];
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
+    // print_r($_POST);
+    if (isset($_POST['submit'])){
+        // print_r($_POST);
+        $id = $_POST['id'];
+        $first_name = $_POST['firstname'];
+        $last_name = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -58,7 +59,7 @@ function update(){
         $query = "UPDATE persons set first_name='". $first_name . "', last_name='". $last_name ."',
                     email='". $email ."',password='". $password ."' where id='".$id."'"; 
         // echo $query;
-        $result = mysqli_query($conn, $sql) or die ( mysqli_error());
+        $result = mysqli_query($conn, $query) or die ( mysqli_error($query));
 
         header("Location: viewUsers.php"); 
     }

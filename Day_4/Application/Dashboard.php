@@ -1,6 +1,5 @@
 <?php
-    if(isset($_POST))
-
+    include("auth.php");
 ?>
 
 
@@ -20,9 +19,11 @@
             <div class="row">
                 <div class="col-sm-4">
                     <!-- <button type="submit"  name="view" class="button"><span>View Users</span></button>   -->
-                    <form  action="viewUsers.php" method="post">";
+                    <form  action="viewUsers.php" method="post">
                         <input type="submit" id="submit" name="submit" class="button" value="View Users" />
+                       
                     </form>
+                    <a href="./API/logout.php"><button class="button" >Logout</button></a>
                 </div>
                 <div class="col-sm-4">
 
