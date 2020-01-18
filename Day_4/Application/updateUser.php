@@ -1,13 +1,13 @@
 <?php
     include("Functions.php");
-    $conn = connectToDB();
-    update();
-
+    $manage = new Manage();
+    $conn = $manage->connectToDB(); //own function that connect to database
+    $manage->updateUser();
     $id = $_REQUEST['id'];
     $query = "SELECT * from persons where id='".$id."'"; 
     $result = mysqli_query($conn, $query) or die ( mysqli_error());
     $row = mysqli_fetch_assoc($result);
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
                 <!--  -->
             </div>
             <div class="col-sm-6    ">
-                <center><h3>PHP Activity Compilation</h3></center>
+                <center><h3>Update User Information</h3></center>
                 <form class="form" method="post">
                     <input type="text" value="<?php echo $row['id'];?>" hidden name="id">
                     <label for="fname">First Name</label>
@@ -42,7 +42,7 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" value="<?php echo $row['password'];?>">
                 
-                    <input type="submit" name="submit" value="Register">
+                    <input type="submit" name="submit" value="Save Changes">
                 </form>
             </div>
             <div class="col-sm-4">

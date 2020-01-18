@@ -1,24 +1,13 @@
 <?php
-
-try{
     session_start();
-    if(isset($_SESSION["login"])){
-        if ($_SESSION["login"]) {
-            header("Location: Dashboard.php");
-        } 
-    }
     include("Functions.php");
     try{
         $manage = new Manage();
         $conn = $manage->connectToDB(); //own function that connect to database
     }catch(Exception $e){
-        echo "Message: " . $e->getMessage();
+        echo "Message: " .$e->getMessage();
     }
     
-}catch(Exception $e){
-    echo "Message: " . $e->getMessage();
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +27,7 @@ try{
                 <!--  -->
             </div>
             <div class="col-sm-6    ">
-                <center><h3>PHP Activity Compilation</h3></center>
+                <center><h3>Add Medicine</h3></center>
                 <?php if(isset($_SESSION["message"])): ?>
                     <div class="err_message alert alert-danger">
                         <?php 
@@ -48,24 +37,20 @@ try{
                         ?>
                     </div>
                 <?php endif; ?>
-                <form class="form"  action="./API/login.php" method="post">
+                <form class="form" action="./API/addMed.php" method="post">
+                    <label for="generic_name">Generic Name</label>
+                    <input type="text" name="generic_name" placeholder="Generic Name">
 
-                    <label for="lname">Email</label>
-                    <input type="email" id="email" name="email" value="<?php 
-                    if(isset($_COOKIE["user"])) {
-                        echo $_COOKIE["user"];
-                    } ?>" placeholder="Email">
+                    <label for="brand_name">Brand Name</label>
+                    <input type="text"  name="brand_name" placeholder="Brand Name">
+
+                    <label for="price">Price</label>
+                    <input type="text" name="price" placeholder="Price">
                     
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="********">
-                    <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="remember" <?php 
-                        if(isset($_COOKIE["user"])) {
-                            echo "checked";
-                        } ?>> Remember me</label>
-                    </div>
-                    <input type="submit" name="login" value="Login">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" name="quantity" placeholder="Quantity">
+                
+                    <input type="submit" name="submit" value="Add">
                 </form>
             </div>
             <div class="col-sm-4">

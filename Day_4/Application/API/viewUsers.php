@@ -1,13 +1,14 @@
 <?php 
 
-    include("Functions.php");
-    echo "<link rel='stylesheet' type='text/css' href='form.css' />";
+    include("../Functions.php");
+    echo "<link rel='stylesheet' type='text/css' href='../form.css' />";
 
-	$conn = connectToDB();
-	
+	$manage = new Manage();
+    $conn =$manage->connectToDB(); //own function that connect to database
+
 	// Check connection
 	if($conn === false){
-		die("ERROR: Could not connect. " . mysqli_connect_error());
+		die("ERROR: Could not connect. " . mysqli_connect_error()); //PHP Error Handling
 	}
 	
 	// Attempt select query execution
@@ -24,7 +25,7 @@
 					echo "<th>Password</th>";
 					echo "<th colspan='2'>Action</th>";
                 echo "</tr>";
-			while($row = mysqli_fetch_array($result)){
+			while($row = mysqli_fetch_array($result)){ //loop
                 // echo gettype($row);
 				echo "<tr>";
 					echo "<td>" . $row['first_name'] . "</td>";
@@ -32,8 +33,8 @@
 					echo "<td>" . $row['email'] . "</td>";
 					echo "<td>" . $row['password'] . "</td>";
 					$id = $row['id'];
-					echo "<td><a href='Delete.php?id=$id'>Delete</a></td>";
-					echo "<td><a href='Edit.php?id=$id'>Edit</a></td>";
+					echo "<td><a href='../DeleteUser.php?id=$id'>Delete</a></td>";
+					echo "<td><a href='../updateUser.php?id=$id'>Edit</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
@@ -46,7 +47,5 @@
 	
 	// Close connection
 	mysqli_close($conn);
-
-
 
 ?>

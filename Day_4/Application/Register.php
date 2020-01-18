@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    include("Functions.php");
+    try{
+        $manage = new Manage();
+        $conn = $manage->connectToDB(); //own function that connect to database
+    }catch(Exception $e){
+        echo "Message: " .$e->getMessage();
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +27,17 @@
                 <!--  -->
             </div>
             <div class="col-sm-6    ">
-                <center><h3>PHP Activity Compilation</h3></center>
-                <form class="form" action="Login.php" method="post">
+                <center><h3>ApPharmacy</h3></center>
+                <?php if(isset($_SESSION["message"])): ?>
+                    <div class="err_message alert alert-danger">
+                        <?php 
+                            echo $_SESSION["message"];
+                            unset($_SESSION["message"]);
+                            echo "<script> $('.err_message').fadeOut() </script>";
+                        ?>
+                    </div>
+                <?php endif; ?>
+                <form class="form" action="./API/register.php" method="post">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="First Name">
 
@@ -30,7 +51,9 @@
                     <input type="password" id="password" name="password" placeholder="********">
                 
                     <input type="submit" name="submit" value="Register">
+                    
                 </form>
+                <a href="Login.php"><input type="submit" value="Login"></a>
             </div>
             <div class="col-sm-4">
                 <!--  -->
@@ -41,10 +64,3 @@
 
 </body>
 </html>
-
-
-
-<?php
-
-
-?>

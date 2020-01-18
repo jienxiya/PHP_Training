@@ -1,68 +1,74 @@
 <?php
 
-function connectToDB(){
-    return mysqli_connect("localhost", "root", "","pntraining");
-}
+class Manage{
+    private $conn;
 
+    function connectToDB(){
+        return mysqli_connect("localhost", "root", "admin123","pntraining");
+    }
 
-// function update($first_name,$middle_name,$last_name,$email){
-//     return "UPDATE persons set first_name='". $first_name . "', middle_name='". $middle_name ."',
-//     last_name='". $last_name ."',email='". $email ."' where id='".$id."'";
-// }
+    function deleteUser(){
+        $conn = $this->connectToDB();
+        $id = $_REQUEST['id'];
+        if(conn === false){
+            die("ERROR: Could not connect. " . mysqli_connect_error());
+        }
+        $sql = "DELETE  FROM persons WHERE id='".$id."'";
+        $query = mysqli_query($conn, $sql);
+        header("Location: ./API/viewUsers.php");
+    }
 
-function create(){
-    $conn = connectToDB(); //own function that connect to database
+    function removeMedicine(){
+        $conn = $this->connectToDB();
+        $id = $_REQUEST['id'];
+        if(conn === false){
+            die("ERROR: Could not connect. " . mysqli_connect_error());
+        }
+        $sql = "DELETE  FROM medicines WHERE id='".$id."'";
+        $query = mysqli_query($conn, $sql);
+        header("Location: ./API/viewMedicines.php");
+    }
 
-    if(isset($_POST['submit'])){
-        $first_name = $_POST['firstname'];
-        $last_name = $_POST['lastname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        if($first_name == '' || $last_name == '' || $email == '' || $password == ''){
-            echo '<script type="text/javascript">';
-            echo 'alert("Please fill in all the field!)';
-            echo '</script>';
-        }else{
-            $sql = "INSERT INTO persons (first_name, last_name, email, password)
-                 VALUES ('$first_name', '$last_name', '$email', '$password')";
-            $query = mysqli_query($conn, $sql);
+    function updateUser(){
+        $conn = $this->connectToDB();
+        // print_r($_POST);
+        if (isset($_POST['submit'])){
+            // print_r($_POST);
+            $id = $_POST['id'];
+            $first_name = $_POST['firstname'];
+            $last_name = $_POST['lastname'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+    
+            $query = "UPDATE persons set first_name='". $first_name . "', last_name='". $last_name ."',
+                        email='". $email ."',password='". $password ."' where id='".$id."'"; 
+            // echo $query;
+            $result = mysqli_query($conn, $query) or die ( mysqli_error($query));
+    
+            header("Location: ./API/viewUsers.php"); 
         }
     }
-    mysqli_close($conn);
-}
 
-function delete(){
-    $conn = connectToDB();
-
-    $id = $_REQUEST['id'];
-    if($conn === false){
-		die("ERROR: Could not connect. " . mysqli_connect_error());
-	}
-	// Attempt select query execution
-	$sql = "DELETE  FROM persons WHERE id='".$id."'";
-    $query = mysqli_query($conn, $sql);
-    header("Location: viewUsers.php");
-}
-
-function update(){
-    $conn = connectToDB();
-    // print_r($_POST);
-    if (isset($_POST['submit'])){
+    function updateMedicine(){
+        $conn = $this->connectToDB();
         // print_r($_POST);
-        $id = $_POST['id'];
-        $first_name = $_POST['firstname'];
-        $last_name = $_POST['lastname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // $sql = updateQuery($first_name,$middle_name, $last_name,$email); // own function
-        $query = "UPDATE persons set first_name='". $first_name . "', last_name='". $last_name ."',
-                    email='". $email ."',password='". $password ."' where id='".$id."'"; 
-        // echo $query;
-        $result = mysqli_query($conn, $query) or die ( mysqli_error($query));
-
-        header("Location: viewUsers.php"); 
+        if (isset($_POST['submit'])){
+            // print_r($_POST);
+            $id = $_POST['id'];
+            $generic_name = $_POST['generic_name'];
+            $brand_name = $_POST['brand_name'];
+            $price = $_POST['price'];
+            $quantity = $_POST['quantity'];
+    
+            $query = "UPDATE medicines set generic_name='". $generic_name . "', brand_name='". $brand_name ."',
+                        price='". $price ."',quantity='". $quantity ."' where id='".$id."'"; 
+            // echo $query;
+            $result = mysqli_query($conn, $query) or die ( mysqli_error($conn));
+    
+            header("Location: ./API/viewMedicines.php"); 
+        }
     }
 }
+
 
 ?>

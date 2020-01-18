@@ -2,7 +2,6 @@
     include("auth.php");
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,24 +11,22 @@
     </head>
     <body>
         <br><br>
-        <center><h2>Welcome to PHP!</h2></center>
+        <center><h2>Welcome to ApPharmacy</h2></center>
         <br><br>
-        <hr>
+        <hr
+        
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <!-- <button type="submit"  name="view" class="button"><span>View Users</span></button>   -->
-                    <form  action="viewUsers.php" method="post">
-                        <input type="submit" id="submit" name="submit" class="button" value="View Users" />
-                       
-                    </form>
-                    <a href="./API/logout.php"><button class="button" >Logout</button></a>
+                    <a href="./API/viewUsers.php"><button class="button" >View Users</button></a>
                 </div>
                 <div class="col-sm-4">
-
+                    <a href="./API/viewMedicines.php"><button class="button" >View Medicine</button></a>
+                    <a href="addMedicine.php"><button class="button" >Add Medicine</button></a>
                 </div>
                 <div class="col-sm-4">  
-
+                    <a href="./API/logout.php"><button class="button" >Logout</button></a>
                 </div>
             </div>
         </div>
