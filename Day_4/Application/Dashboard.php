@@ -19,14 +19,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <a href="./API/viewUsers.php"><button class="button" >View Users</button></a>
+                    <center>
+                        <a href="./API/viewUsers.php"><button class="button" >View Users</button></a>
+                    </center>
                 </div>
                 <div class="col-sm-4">
-                    <a href="./API/viewMedicines.php"><button class="button" >View Medicine</button></a>
-                    <a href="addMedicine.php"><button class="button" >Add Medicine</button></a>
+                    <center>
+                        <a href="./API/viewMedicines.php"><button class="button" >View Medicine</button></a>
+                        <a href="addMedicine.php"><button class="button" >Add Medicine</button></a>
+                    </center>
                 </div>
-                <div class="col-sm-4">  
-                    <a href="./API/logout.php"><button class="button" >Logout</button></a>
+                <div class="col-sm-4">
+                    <center>  
+                        <a href="./API/logout.php"><button class="button" >Logout</button></a>
+                    </center>
                 </div>
             </div>
         </div>

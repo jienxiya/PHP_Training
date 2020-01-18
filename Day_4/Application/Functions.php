@@ -4,7 +4,7 @@ class Manage{
     private $conn;
 
     function connectToDB(){
-        return mysqli_connect("localhost", "root", "admin123","pntraining");
+        return mysqli_connect("localhost", "root", "","pntrainings");
     }
 
     function deleteUser(){

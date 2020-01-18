@@ -17,6 +17,10 @@
     // echo gettype($result);
 	if($result){
 		if(mysqli_num_rows($result) > 0){
+			echo "<br><br>";
+			echo "<center><h2>List of ApPharmacy Users</h2></center>";
+			echo " <br><br>";
+			echo "<hr>";
 			echo "<table class='form'>";
 				echo "<tr>";
 					echo "<th>First Name</th>";

@@ -50,10 +50,10 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="********">
                 
-                    <input type="submit" name="submit" value="Register">
+                    <input type="submit" name="submit" style="width: 45%; float:right" value="Register">
                     
                 </form>
-                <a href="Login.php"><input type="submit" value="Login"></a>
+                <a href="Login.php"><input type="submit" style="width: 45%; float:left" value="Login"></a>
             </div>
             <div class="col-sm-4">
                 <!--  -->

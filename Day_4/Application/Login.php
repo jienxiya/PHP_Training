@@ -38,7 +38,7 @@ try{
                 <!--  -->
             </div>
             <div class="col-sm-6    ">
-                <center><h3>PHP Activity Compilation</h3></center>
+                <center><h3>Login to ApPharmacy</h3></center>
                 <?php if(isset($_SESSION["message"])): ?>
                     <div class="err_message alert alert-danger">
                         <?php 
